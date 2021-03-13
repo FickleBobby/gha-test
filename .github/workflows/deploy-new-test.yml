@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node13.6.0-chrome80-ff72
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Run E2E test
         uses: cypress-io/github-action@v2
         with:
