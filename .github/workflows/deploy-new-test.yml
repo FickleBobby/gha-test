@@ -4,14 +4,10 @@ on:
 jobs:
   deploy-cypress-run:
     runs-on: ubuntu-latest
-  
-    name: E2E
+    container: cypress/browsers:node12.18.0-chrome83-ff77
     steps:
-
       - uses: actions/checkout@v2
-      - name: Run E2E
         uses: cypress-io/github-action@v2
-        #continue-on-error: true
         with:
           browser: chrome
           start: npm start
