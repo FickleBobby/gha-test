@@ -1,0 +1,21 @@
+name: New Deploy
+on:  
+  workflow_dispatch:
+jobs:
+  deploy-cypress-run:
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node13.6.0-chrome80-ff72
+      options: --user 1001
+    name: E2E
+    steps:
+
+      - uses: actions/checkout@v2
+      - name: Run E2E
+        uses: cypress-io/github-action@v2
+        #continue-on-error: true
+        with:
+          browser: chrome
+          start: npm start
+          wait-on: 'http://localhost:3000'
+    
