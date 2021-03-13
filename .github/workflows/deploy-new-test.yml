@@ -8,7 +8,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run E2E test
-        uses: cypress-io/github-action@v2
-        with:
-          browser: chrome
+      - name: Install cypress and verify
+        run: |
+          npm ci
+          $(npm bin)/cypress verify
+      - name: Run Cypress tests
+        run: npm run test:chrome
+      
