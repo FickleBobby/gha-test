@@ -5,5 +5,7 @@ jobs:
   deploy-cypress-run:
     runs-on: ubuntu-latest
     container: cypress/browsers:node13.6.0-chrome80-ff72
-    
-    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run E2E
+       
