@@ -1,23 +1,10 @@
 name: New Deploy
-
 on:  
   workflow_dispatch:
-
 jobs:
-  get-secret:
-    name: Get Secret
-    runs-on: ubuntu-18.04
-    
-    steps:
-      - name: Show secret
-        run: |
-          echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
-
   deploy-cypress-run:
     runs-on: ubuntu-18.04
-    needs: get-secret
-    container: cypress/browser:node14.16.0-chrome89-ff86
-
+    container: cypress/browsers:node14.16.0-chrome89-ff86
     steps:
       - name: Checkout
         uses: actions/checkout@v2
