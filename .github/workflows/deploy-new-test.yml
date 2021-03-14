@@ -3,11 +3,12 @@ on:
   workflow_dispatch:
 jobs:
   get-secret:
+    name: Get Secret
     runs-on: ubuntu-18.04
     
     steps:
       uses: actions/checkout@v2
-      
+
       name: Show secret
       run: |
         echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
