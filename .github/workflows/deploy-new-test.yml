@@ -4,7 +4,9 @@ on:
 jobs:
   deploy-cypress-run:
     runs-on: ubuntu-18.04
-    container: ${{ secrets.CONTAINER_TAG }}
+    run: |
+      echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
+    container: cypress/browser:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
