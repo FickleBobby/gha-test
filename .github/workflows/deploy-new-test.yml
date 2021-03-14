@@ -9,12 +9,9 @@ jobs:
     runs-on: ubuntu-18.04
     
     steps:
-      name: Checkout
-      uses: actions/checkout@v2
-
-      name: Show secret
-      run: |
-        echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
+      - name: Show secret
+        run: |
+          echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
 
   deploy-cypress-run:
     runs-on: ubuntu-18.04
