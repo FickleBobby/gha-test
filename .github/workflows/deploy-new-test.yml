@@ -2,10 +2,18 @@ name: New Deploy
 on:  
   workflow_dispatch:
 jobs:
+  get-secret:
+    runs-on: ubuntu-18.04
+    
+    steps:
+      uses: actions/checkout@v2
+      
+      name: Show secret
+      run: |
+        echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
   deploy-cypress-run:
     runs-on: ubuntu-18.04
-    run: |
-      echo ${{ secrets.CONTAINER_TAG }} | sed 's/./& /g'
+   
     container: cypress/browser:latest
     steps:
       - name: Checkout
