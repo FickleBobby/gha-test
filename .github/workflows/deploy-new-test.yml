@@ -15,7 +15,8 @@ jobs:
 
   deploy-cypress-run:
     runs-on: ubuntu-18.04
-    container: cypress/browser:latest
+    needs: get-secret
+    container: cypress/browser:node14.16.0-chrome89-ff86
 
     steps:
       - name: Checkout
