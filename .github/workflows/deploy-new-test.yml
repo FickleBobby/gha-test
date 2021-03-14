@@ -4,14 +4,16 @@ on:
 jobs:
   deploy-cypress-run:
     runs-on: ubuntu-18.04
-    container: cypress/browsers:latest
+    container: cypress/browsers:node14.16.0-chrome89-ff86
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Install cypress and verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
-      - name: Run Cypress tests
-        run: npm run test:chrome
+        uses: cypress-io/github-action@v2
+        #continue-on-error: true
+        with:
+          browser: chrome
+          start: npm start
+          wait-on: 'http://localhost:3000'
       
